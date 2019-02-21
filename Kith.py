@@ -23,6 +23,14 @@ def keysearch(key):
             if keyword.lower() in title.lower():
                 print(title, url, time)
                 mylist.append(title)
+                purl = ('{}.xml'.format(url))
+                r2 = requests.get(url=purl, headers=headers)
+                soup2 = BeautifulSoup(r2.text, 'html.parser')
+                for proditems in soup2.find_all("variant"):
+                    size = proditems.find("title").text.strip()
+                    link = 'https://www.kith.com/cart/{}:1'.format(proditems.find("id").text.strip())
+                    print('     ',size,'ATC:',link)
+                print('')
             else:
                 if keyword.lower() in url.lower():
                     mylist.append(url)
