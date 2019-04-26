@@ -2,10 +2,15 @@ import requests
 from bs4 import BeautifulSoup
 import json
 
+#feeling helpful 
+#(hopefully) without spilling eXpl0itzZz you are intentionally withholding
+#btw bobby got some cool + simple stuff nice work
+#Python is not my forte shoutout golang
 
 def keysearch(key):
     headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64)  AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36'}
-
+    #set index to work for any shopify sitemap  
+    #dynamicURL_ThankMeLater = `https://xxxxxx/sitemap_products_1.xml?from=1&to=9999999999999999`
     url = 'https://kith.com/sitemap_products_1.xml?from=135297231&to=2057600008261'
 
     r = requests.get(url=url, headers=headers)
@@ -30,6 +35,7 @@ def keysearch(key):
                 for proditems in data['product']['variants']:
                     variant = proditems['id']
                     size = proditems['title']
+                    #link = 'https://xxxxxx/cart/{}:1'.format(variant)
                     link = 'https://www.kith.com/cart/{}:1'.format(variant)
                     print('     ',size,'ATC:',link)
                 print()
@@ -45,6 +51,7 @@ def keysearch(key):
 
 
 while True:
+    #prompt user for xxxxx
     keyword = input('Enter Keyword, Hit Enter When Ready:').lower()
     if keyword == "":
         print('Program Ended')
